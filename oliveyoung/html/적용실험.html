@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link href="../css/body.css" rel="stylesheet"> -->
+
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul, ol, li {
+        list-style: none;
+        }
+
+        .wrapper__body {
+        width: 1020px;
+        min-width: 1020px;
+        min-height: 450px;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+        }
+
+        .main__mainBaner {
+        position: absolute;
+        left: -450px;
+        width: 1920px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper__body">
+            <div class="wrapper__body__container">
+                <div class="main__mainBaner">
+                    <div class="slider">
+                        <a class="banner_link" href="#">
+                            <img src="../images/main1.jpg" alt="3월 헬스 오픈">
+                        </a>
+                        <a class="banner_link" href="#">
+                            <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/6191234676113162745.jpg" alt="3월">
+                        </a>
+                        <a class="banner_link" href="#">
+                            <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/5843221549063639695.jpg" alt="스킨케어-303-2_신상로그온_최아형">
+                        </a>
+                        <button class="prevBtn"></button>
+                        <button class="nextBtn"></button>
+                        <button class="pauseBtn"></button>
+                        <p class="page">1/16</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var slider = $('.slider');
+
+            slider.on('init', function (event, slick) {
+                // 슬라이더 초기화 시 자동 재생 클래스 추가
+                slider.addClass('slick-autoplaying');
+                
+            });
+
+            slider.slick({
+                // 이전 및 다음 버튼 옵션 설정
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>',
+                // dots 옵션 활성화
+                dots: true,
+                // 자동 재생 설정
+                autoplay: true,
+                autoplaySpeed: 3000, // 3초마다 자동 재생
+                slide: 'a',
+                // slideWidth: '100%',
+                // slideHeight: '100%'
+            });
+
+            // 정지 버튼 클릭 시 자동 재생 일시 정지/재개
+
+            $('.slick-pause').click(function () {
+                if (slider.hasClass('slick-autoplaying')) {
+                    slider.slick('slickPause');
+                    slider.removeClass('slick-autoplaying');
+                    $(this).text('Play');
+                } else {
+                    slider.slick('slickPlay');
+                    slider.addClass('slick-autoplaying');
+                    $(this).text('Pause');
+                }
+            });
+
+        });
+
+    </script>
+</body>
+</html>

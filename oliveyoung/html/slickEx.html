@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Example</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <style>
+        .slick-slide {
+            text-align: center;
+            color: #fff;
+            background: #4b8bff;
+            padding: 80px 0;
+            font-size: 30px;
+            margin: 0 auto;
+        }
+
+        /* 이전 및 다음 버튼의 스타일 지정 */
+        .slick-prev,
+        .slick-next {
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        /* 활성화(호버) 상태일 때의 스타일 지정 */
+        .slick-prev:hover,
+        .slick-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .slick-prev {
+            left: 20px;
+            /* 이전 버튼 위치 조정 */
+            top: 20px;
+        }
+
+        .slick-next {
+            right: 20px;
+            /* 다음 버튼 위치 조정 */
+            top: 20px;
+        }
+
+        /* dots 스타일 지정 */
+        .slick-dots {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slick-dots li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .slick-dots li button {
+            font-size: 14px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            line-height: 10px;
+            cursor: pointer;
+        }
+
+        .slick-dots li button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* 활성화된 dots 스타일 지정 */
+        .slick-dots li.slick-active button {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* 정지 버튼 스타일 지정 */
+        .slick-pause {
+            position: absolute;
+            top: 20px;
+            right: 50%;
+            font-size: 14px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider">
+        <a href="#"><img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1"></a>
+        <a href="#"><img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2"></a>
+        <!-- 최소한 2개의 슬라이드가 필요함 -->
+    </div>
+
+    <!-- 정지 버튼 -->
+    <button class="slick-pause">Pause</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var slider = $('.slider');
+
+            slider.on('init', function (event, slick) {
+                // 슬라이더 초기화 시 자동 재생 클래스 추가
+                slider.addClass('slick-autoplaying');
+            });
+
+            slider.slick({
+                // 이전 및 다음 버튼 옵션 설정
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>',
+                // dots 옵션 활성화
+                dots: true,
+                // 자동 재생 설정
+                autoplay: true,
+                autoplaySpeed: 3000 // 3초마다 자동 재생
+            });
+
+            // 정지 버튼 클릭 시 자동 재생 일시 정지/재개
+
+            $('.slick-pause').click(function () {
+                if (slider.hasClass('slick-autoplaying')) {
+                    slider.slick('slickPause');
+                    slider.removeClass('slick-autoplaying');
+                    $(this).text('Play');
+                } else {
+                    slider.slick('slickPlay');
+                    slider.addClass('slick-autoplaying');
+                    $(this).text('Pause');
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

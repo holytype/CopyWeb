@@ -91,7 +91,7 @@ ul, ol, li {
   cursor: pointer;
 }
 
-.mainBanner_slider .page {
+.slider .page {
   position: absolute;
   bottom: 30px;
   left: 50%;
@@ -197,6 +197,15 @@ ul, ol, li {
 .main__popular { 
   height: 668px;
   border-bottom: 1px solid black;
+}
+
+.popular__title {
+  height: 40px;
+  margin: 51px 0 8px;
+  font-size: 26px;
+  color: #000;
+  text-align: center;
+  line-height: 40px;
 }
 
 .main__onlyone {
