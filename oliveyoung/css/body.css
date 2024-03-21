@@ -168,8 +168,10 @@ ul, ol, li {
 
 .main__weekly li {
   width: 500px;
-    height: 227px;
-    border-radius: 8px;
+  height: 227px;
+  border-radius: 8px;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .main__weekly a{
