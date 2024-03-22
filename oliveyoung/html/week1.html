@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        
+        body, fieldset {
+            margin: 0;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+        }
+
+        fieldset > div {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .table_wrapper {
+            height: 1px;
+            width: 100%;
+            margin: 20px 0 20px 0;
+            border-top: 1px solid black;
+        }
+
+        table, td {
+            border: 1px solid black;
+        }
+
+        tr {
+            height: 50px;
+        }
+
+        td:nth-child(1) {
+            width: 50px;
+        }
+        td:nth-child(2) {
+            width: 600px;
+        }
+        td:nth-child(3) {
+            width: 100px;
+        }
+        td:nth-child(4) {
+            width: 150px;
+        }
+        td:nth-child(5) {
+            width: 150px;
+        }
+        td:nth-child(6) {
+            width: 50px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <form class="form_wrapper">
+            <fieldset>
+                <legend>공지사항 작성하기</legend>
+                <div class="block">
+                    <div>제목</div>
+                    <input type="text">
+                </div>
+                <div class="block">
+                    <div>내용</div>
+                    <textarea ></textarea>
+                </div>
+                <div class="block">
+                    <div>첨부파일</div>
+                    <input type="submit" value="파일 선택">
+                    <div>선택된 파일 없음</div>
+                </div>
+                <div class="block">
+                    <input type="submit" value="작성하기">
+                </div>
+            </fieldset> 
+        </form>
+        <div class="table_wrapper">
+            <table>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

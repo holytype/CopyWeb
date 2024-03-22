@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원가입</title>
+
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body{
+	background: skyblue;
+}
+
+
+.wrap{
+	 width: 100%;
+     height: 100%;
+     
+}
+
+form {
+    margin: 0 auto;
+    width: 300px;
+	 height: 100%;
+	 border: 1px solid black;
+	 padding: 60px 10px 10px 10px;
+	 background: silver;
+     display: flex;
+     flex-direction: column;
+     transform: translateY(50%);
+}
+
+.list{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+    position: relative;
+}
+
+.list span:first-child, .list:nth-of-type(5) {
+    margin-top: 10px;
+}
+
+input[type=text] {
+    width: 160px;
+    outline: none;
+}
+
+.list:nth-of-type(4) input {
+	width: 70px;
+}
+
+.list:nth-of-type(4) div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+input:not([type=submit]) {
+	border: 0;
+	background: silver;
+	border-bottom: dashed;
+}
+
+label {
+    font-size: 7px;
+    height: 10px;
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 120px;
+}
+
+input[type=submit] {
+    width: 100%;
+    background: greenyellow;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.adress_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.adress_wrap input {
+    margin-top: 20px;
+}
+
+</style>
+
+</head>
+<body>
+	<div class="wrap">
+		<form action="post">
+			<div class="list">
+				<span>아이디</span>
+				<input type="text" id="id" autocomplete="off">
+			</div>
+            <label for="id"></label>
+			<div class="list">
+				<span>패스워드</span>
+				<input type="text" id="ps" autocomplete="off">
+			</div>
+            <label for="ps"></label>
+			<div class="list">
+				<span>패스워드 확인</span>
+				<input type="text" id="ps_check" autocomplete="off">
+			</div>
+            <label for="ps_check"></label>
+			<div class="list">
+				<span>이메일</span>
+                <div>
+                    <input type="text" autocomplete="off">
+                    <span>@</span>
+                    <input type="text" autocomplete="off">
+                </div>
+			</div>
+			<div class="list">
+				<span>주소</span>
+                <div class="adress_wrap">
+                    <input type="text"  name="adress" autocomplete="off" >
+                    <input type="text"  name="adress" autocomplete="off" >
+                </div>
+			</div>
+			<div class="list">
+				<span></span>
+				<input type="submit" value="가 입">
+			</div>
+		</form>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script>
+        $(loadedHandler);
+        function loadedHandler() {
+            $("#id").on("blur",function(){
+                
+                if($(this).val()==0){
+                    $("[for=id]").text("필수 입력 항목 입니다");
+                } else {
+                    $("[for=id]").text("");
+                }
+            });
+
+            $("#ps").on("keydown",function(){      
+                console.log($(this).text().length);   
+                $("[for=ps]").text("영문자 대/소문자 특수만자, 숫자 포함 8~22자");
+            });
+
+            $("#ps").on("blur",function(){
+
+                if($(this).val()==0){
+                    $("[for=ps]").text("필수 입력 항목 입니다");
+                } 
+            });
+
+
+            $("#ps_check").on("blur",function(){
+
+                if($(this).val()==0){
+                    $("[for=ps_check]").text("필수 입력 항목 입니다");
+                } else{
+                    $("[for=ps_check]").text("");
+
+                }
+            });
+
+
+        }
+	</script>
+</body>
+</html>
