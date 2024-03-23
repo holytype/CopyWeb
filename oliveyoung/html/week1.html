@@ -9,16 +9,13 @@
     <style>
         *{
             box-sizing: border-box;
-        }
-        
-        body, fieldset {
             margin: 0;
         }
+
         .wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
+            padding: 20px;
         }
 
         fieldset {
@@ -26,15 +23,60 @@
             flex-direction: column;
         }
 
-        fieldset > div {
+        .inner {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        .block {
             display: flex;
             flex-direction: row;
+            flex: 1;
+        }
+
+        .block:nth-of-type(1) {
+            margin-bottom: 5px;
+        }
+
+        .block:nth-of-type(2) {
+            margin-bottom: 8px;
+        }
+
+        .block:nth-of-type(3) {
+            margin-bottom: 20px;
+        }
+
+        .block div:first-child {
+            width: 73px;
+            text-align: center;
+            align-self: center;
+        }
+
+        input[type=text] {
+            width: 300px;
+        }
+
+        input[type=submit], button {
+            width: 90px;
+        }
+
+        label[for=uploadFile] {
+            margin-left: 5px;
+        }
+
+        .block:last-child {
+            padding-left: 155px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 150px;
+            resize: none;
         }
 
         .table_wrapper {
-            height: 1px;
-            width: 100%;
-            margin: 20px 0 20px 0;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid black;
         }
 
@@ -42,28 +84,29 @@
             border: 1px solid black;
         }
 
-        tr {
-            height: 50px;
+        tr:first-child, tr:last-child {
+            background: orange;
+            text-align: center;
+            color: white;
         }
 
-        td:nth-child(1) {
-            width: 50px;
+        tr:not(:first-child):not(:last-child) {
+            background: ivory;
         }
-        td:nth-child(2) {
-            width: 600px;
+
+        tr:not(:first-child):not(:last-child) td:nth-child(3) {
+            padding: 1px;
         }
-        td:nth-child(3) {
-            width: 100px;
+
+        tr:not(:first-child):not(:last-child) td:nth-child(2) {
+            width: 500px;
         }
-        td:nth-child(4) {
-            width: 150px;
+
+        tr:not(:first-child):not(:last-child) td:nth-child(4),tr:not(:first-child):not(:last-child) td:nth-child(5) {
+            width: 130px;
         }
-        td:nth-child(5) {
-            width: 150px;
-        }
-        td:nth-child(6) {
-            width: 50px;
-        }
+
+        
 
     </style>
 
@@ -71,24 +114,26 @@
 
 <body>
     <div class="wrapper">
-        <form class="form_wrapper">
+        <form action="insert.no" method="post">
             <fieldset>
                 <legend>공지사항 작성하기</legend>
-                <div class="block">
-                    <div>제목</div>
-                    <input type="text">
-                </div>
-                <div class="block">
-                    <div>내용</div>
-                    <textarea ></textarea>
-                </div>
-                <div class="block">
-                    <div>첨부파일</div>
-                    <input type="submit" value="파일 선택">
-                    <div>선택된 파일 없음</div>
-                </div>
-                <div class="block">
-                    <input type="submit" value="작성하기">
+                <div class="inner">
+                    <div class="block">
+                        <div>제목</div>
+                        <input type="text" name="title" placeholder="제목을 입력하시오.">
+                    </div>
+                    <div class="block">
+                        <div>내용</div>
+                        <textarea name="content" placeholder="내용을 입력하시오."></textarea>
+                    </div>
+                    <div class="block">
+                        <div>첨부파일</div>
+                        <input type="submit" id="uploadFile" name="uploadFile" value="파일 선택">
+                        <label for="uploadFile">선택된 파일 없음</label>
+                    </div>
+                    <div class="block">
+                        <input type="submit" value="작성하기">
+                    </div>
                 </div>
             </fieldset> 
         </form>
@@ -96,60 +141,55 @@
             <table>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>번호</td>
+                        <td colspan="2">제목</td>
+                        <td>작성자</td>
+                        <td>작성일</td>
+                        <td>조회수</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>9</td>
+                        <td>공지사항 제목 9</td>
+                        <td><button>바로가기</button></td>
+                        <td>user01</td>
+                        <td>2021-03-29</td>
+                        <td>34</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>6</td>
+                        <td>공지사항 제목 6</td>
+                        <td><button>바로가기</button></td>
+                        <td>answ445</td>
+                        <td>2021-03-12</td>
+                        <td>67</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>3</td>
+                        <td>공지사항 제목 3</td>
+                        <td><button>바로가기</button></td>
+                        <td>testg12</td>
+                        <td>2021-03-01</td>
+                        <td>98</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>2</td>
+                        <td>공지사항 제목 2</td>
+                        <td><button>바로가기</button></td>
+                        <td>palwe3</td>
+                        <td>2021-01-02</td>
+                        <td>85</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>1</td>
+                        <td>공지사항 제목 1</td>
+                        <td><button>바로가기</button></td>
+                        <td>xml23</td>
+                        <td>2020-12-24</td>
+                        <td>124</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="4">전체공지사항 갯수</td>
+                        <td colspan="2">5개</td>
                     </tr>
 
                 </tbody>

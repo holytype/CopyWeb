@@ -27,7 +27,7 @@ form {
 	 height: 100%;
 	 border: 1px solid black;
 	 padding: 60px 10px 10px 10px;
-	 background: silver;
+	 background: bisque;
      display: flex;
      flex-direction: column;
      transform: translateY(50%);
@@ -50,7 +50,7 @@ input[type=text] {
 }
 
 .list:nth-of-type(4) input {
-	width: 70px;
+	width: 72px;
 }
 
 .list:nth-of-type(4) div {
@@ -59,9 +59,13 @@ input[type=text] {
     justify-content: flex-end;
 }
 
+.list:nth-of-type(4) div span {
+    align-self: flex-end;
+} 
+
 input:not([type=submit]) {
 	border: 0;
-	background: silver;
+	background: bisque;
 	border-bottom: dashed;
 }
 
@@ -94,35 +98,35 @@ input[type=submit] {
 </head>
 <body>
 	<div class="wrap">
-		<form action="post">
+		<form action="#" method="post">
 			<div class="list">
 				<span>아이디</span>
-				<input type="text" id="id" autocomplete="off">
+				<input type="text" id="id" autocomplete="off" spellcheck="false">
 			</div>
             <label for="id"></label>
 			<div class="list">
 				<span>패스워드</span>
-				<input type="text" id="ps" autocomplete="off">
+				<input type="text" id="ps" autocomplete="off" spellcheck="false">
 			</div>
             <label for="ps"></label>
 			<div class="list">
 				<span>패스워드 확인</span>
-				<input type="text" id="ps_check" autocomplete="off">
+				<input type="text" id="ps_check" autocomplete="off" spellcheck="false">
 			</div>
             <label for="ps_check"></label>
 			<div class="list">
 				<span>이메일</span>
                 <div>
-                    <input type="text" autocomplete="off">
+                    <input type="text" autocomplete="off" spellcheck="false">
                     <span>@</span>
-                    <input type="text" autocomplete="off">
+                    <input type="text" autocomplete="off" spellcheck="false">
                 </div>
 			</div>
 			<div class="list">
 				<span>주소</span>
                 <div class="adress_wrap">
-                    <input type="text"  name="adress" autocomplete="off" >
-                    <input type="text"  name="adress" autocomplete="off" >
+                    <input type="text"  name="adress" autocomplete="off" spellcheck="false">
+                    <input type="text"  name="adress" autocomplete="off" spellcheck="false">
                 </div>
 			</div>
 			<div class="list">
@@ -137,38 +141,54 @@ input[type=submit] {
         $(loadedHandler);
         function loadedHandler() {
             $("#id").on("blur",function(){
-                
-                if($(this).val()==0){
-                    $("[for=id]").text("필수 입력 항목 입니다");
-                } else {
-                    $("[for=id]").text("");
+                requiredCheck(this);
+            });
+
+            $("#ps").on("click",function(){      
+
+                if($(this).val().length<7||$(this).val().length>21){
+                    $("[for='ps']").text("영문자 대/소문자 특수만자, 숫자 포함 8~22자");
                 }
             });
 
-            $("#ps").on("keydown",function(){      
-                console.log($(this).text().length);   
-                $("[for=ps]").text("영문자 대/소문자 특수만자, 숫자 포함 8~22자");
+            $("#ps").on("input",function(){
+                if($(this).val().length<8||$(this).val().length>22){
+                    $("[for='ps']").text("영문자 대/소문자 특수만자, 숫자 포함 8~22자");
+                    
+                } else {
+                    $("[for='ps']").text("");
+
+                }
             });
 
             $("#ps").on("blur",function(){
-
-                if($(this).val()==0){
-                    $("[for=ps]").text("필수 입력 항목 입니다");
-                } 
+                var inputText=$(this).val();
+                var regex = /^[a-zA-Z0-9!@#$%^&*]{8,32}$/;
+                
+                if(inputText.length==0){
+                    console.log($("[for="+$(this).attr("id")+"]").text());
+                    $("[for='"+$(this).attr("id")+"']").text("필수 입력 항목 입니다");
+                }else if(!regex.test(inputText)){
+                    $('[for="'+$(this).attr("id")+'"]').text("영문자 대/소문자 특수만자, 숫자 포함 8~22자");
+                }
             });
 
 
             $("#ps_check").on("blur",function(){
+                requiredCheck(this);
+            })
 
-                if($(this).val()==0){
-                    $("[for=ps_check]").text("필수 입력 항목 입니다");
-                } else{
-                    $("[for=ps_check]").text("");
+        }
 
+        /**
+         * this를 넣는다.
+        */
+        function requiredCheck(input){
+            if($(input).val().length==0){
+                    $("[for='"+$(input).attr("id")+"']").text("필수 입력 항목 입니다");
+                } else {
+                    $(`[for='${$(input).attr("id")}']`).text("");
                 }
-            });
-
-
         }
 	</script>
 </body>
